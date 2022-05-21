@@ -1,0 +1,68 @@
+[
+    {
+        "name": "Caliper",
+        "image": "https://i.ibb.co/R61cPB5/caliper.webp",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 50,
+        "available": 200,
+        "price": 70
+    },
+    {
+        "name": "Hand Saw",
+        "image": "https://i.ibb.co/Lrr8rn4/handshaw.webp",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 20,
+        "available": 130,
+        "price": 30
+    },
+    {
+        "name": "Marking Gauge",
+        "image": "https://i.ibb.co/9GWZBvg/marking.webp",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 10,
+        "available": 50,
+        "price": 51
+    },
+    {
+        "name": "Pliers",
+        "image": "https://i.ibb.co/vc6gSkD/pliers.webp",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 5,
+        "available": 30,
+        "price": 155
+    },
+    {
+        "name": "Steel Nail",
+        "image": "https://i.ibb.co/XpP0M1q/nail.jpg",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 20,
+        "available": 230,
+        "price": 65
+    },
+    {
+        "name": "Hammer",
+        "image": "https://i.ibb.co/G7bppLr/hammer.webp",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 15,
+        "available": 190,
+        "price": 85
+    },
+    {
+        "name": "Electric Jigsaw",
+        "image": "https://i.ibb.co/KXwrbdp/jigshaw.webp",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 10,
+        "available": 180,
+        "price": 210
+    },
+    {
+        "name": "Woodwork Tools",
+        "image": "https://i.ibb.co/JpvqvMb/Shop-15.webp",
+        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "minOrder": 35,
+        "available": 160,
+        "price": 115
+    }
+
+
+]
