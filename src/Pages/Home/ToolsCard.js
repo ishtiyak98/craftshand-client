@@ -10,7 +10,7 @@ const ToolsCard = ({ tool }) => {
         </div>
         <div class="card-body">
           <h2 class="card-title font-medium text-3xl mb-2">{name}</h2>
-          <p className="mb-2">{description}</p>
+          <p className="mb-2 text-slate-500">{description}</p>
           <div className="flex justify-between mb-2">
               <div><span className="font-medium">Min. Order :</span> {minOrder}</div>
               <div><span className="font-medium">Available :</span> {available}</div>
