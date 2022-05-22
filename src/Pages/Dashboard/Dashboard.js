@@ -18,8 +18,8 @@ const Dashboard = () => {
           <Outlet></Outlet>
         </div>
         <div className="drawer-side">
-          <label for="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-72 bg-gray-100 text-base-content space-y-5git">
+          <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+          <ul className="menu p-4 overflow-y-auto w-72 bg-gray-100 text-base-content space-y-5">
             {/* <!-- Sidebar content here --> */}
             <li className="bg-gray-400 text-white rounded-lg shadow-lg">
               <NavLink to={"orders"}>My Orders</NavLink>
