@@ -13,15 +13,6 @@ const Tools = () => {
     return <Spinner></Spinner>;
   }
 
-  // const [tools, setTools] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("tools.json")
-  //     .then((res) => res.json())
-  //     .then((data) => setTools(data));
-  // }, []);
-
-  console.log(tools);
   return (
     <div className="my-28 px-6 lg:px-24">
       <h2 className="text-5xl text-center lg:text-left font-semibold mb-12">
@@ -29,7 +20,7 @@ const Tools = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20">
-        {tools.map((tool) => (
+        {[...tools].reverse().slice(0,6).map((tool) => (
           <ToolsCard key={tool._id} tool={tool}></ToolsCard>
         ))}
       </div>
