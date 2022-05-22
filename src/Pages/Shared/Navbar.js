@@ -73,10 +73,15 @@ const Navbar = () => {
           CraftsHand
         </Link>
       </div>
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal space-x-4">
-          {navItem}
-        </ul>
+      <div className="navbar-end ">
+        <div className="hidden lg:flex">
+          <ul className="menu menu-horizontal space-x-4">
+            {navItem}
+          </ul>
+        </div>
+        <div className="">
+            <label htmlFor="my-drawer-2" className="btn btn-primary text-white drawer-button lg:hidden">Dashboard</label>
+        </div>
       </div>
     </div>
   );

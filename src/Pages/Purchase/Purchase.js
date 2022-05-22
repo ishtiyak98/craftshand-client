@@ -148,7 +148,7 @@ const Purchase = () => {
                         <label className="label">
                           <span className="label-text-alt text-red-500">
                             {errors.phone?.type === "required" &&
-                              "Address is required"}
+                              "Phone is required"}
                           </span>
                         </label>
                       </div>

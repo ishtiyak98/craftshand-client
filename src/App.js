@@ -2,6 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Blogs from "./Pages/Blogs/Blogs";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import MyOrders from "./Pages/Dashboard/MyOrders";
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import MyReview from "./Pages/Dashboard/MyReview";
 import Home from "./Pages/Home/Home";
 import LogIn from "./Pages/LogIn/LogIn";
 import SignUp from "./Pages/LogIn/SignUp";
@@ -27,6 +31,19 @@ function App() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard></Dashboard>
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<MyOrders></MyOrders>}></Route>
+          <Route path="orders" element={<MyOrders></MyOrders>}></Route>
+          <Route path="review" element={<MyReview></MyReview>}></Route>
+          <Route path="profile" element={<MyProfile></MyProfile>}></Route>
+        </Route>
         <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>
 
