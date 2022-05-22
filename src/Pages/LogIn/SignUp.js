@@ -5,25 +5,48 @@ import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import LogInWithApp from "./LogInWithApp";
 
-const LogIn = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const [loginMessage, setLoginMessage] = useState("");
-    const [textColor, setTextColor] = useState("");
+const SignUp = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const [loginMessage, setLoginMessage] = useState("");
+  const [textColor, setTextColor] = useState("");
 
+  const handleSignUp = () => {
 
-    const handleLogin = () => {
-
-    }
+  }
 
   return (
-    <section>
+    <div>
       <Navbar></Navbar>
 
       <div className="flex h-screen justify-center items-center  bg-slate-100">
         <div className="card w-11/12 lg:w-[500px] bg-base-100 shadow-xl">
           <div className="card card-body">
-            <h2 className="text-4xl font-medium text-center">Login</h2>
-            <form onSubmit={handleSubmit(handleLogin)}>
+            <h2 className="text-4xl font-medium text-center">Signup</h2>
+            <form onSubmit={handleSubmit(handleSignUp)}>
+
+            <div className="form-control w-full max-w-lg">
+                <label className="label">
+                  <span className="label-text text-base">User Name</span>
+                </label>
+                <input
+                  type="text"
+                  className="input input-bordered input-primary w-full max-w-lg"
+                  {...register("name", {
+                    required: true
+                  })}
+                />
+                <label className="label">
+                  <span className="label-text-alt text-red-500">
+                    {errors.name?.type === "required" && "Name field cannot be empty"}
+                  </span>
+                </label>
+              </div>
+
+              
               <div className="form-control w-full max-w-lg">
                 <label className="label">
                   <span className="label-text text-base">Email</span>
@@ -41,7 +64,7 @@ const LogIn = () => {
                 />
                 <label className="label">
                   <span className="label-text-alt text-red-500">
-                    {errors.email?.type === "required" && "Email is required"}
+                    {errors.email?.type === "required" && "Email field cannot be empty"}
                     {errors.email?.type === "pattern" && errors.email.message}
                   </span>
                 </label>
@@ -65,7 +88,7 @@ const LogIn = () => {
                 <label className="label">
                   <span className="label-text-alt text-red-500">
                     {errors.password?.type === "required" &&
-                      "Password is required"}
+                      "Password field cannot be empty"}
                     {errors.password?.type === "minLength" &&
                       errors.password.message}
                   </span>
@@ -80,30 +103,28 @@ const LogIn = () => {
                 />
               </div>
               <p className={`text-center ${textColor} text-sm`}>
-                  {loginMessage && loginMessage}
+                {loginMessage && loginMessage}
               </p>
             </form>
 
             <div className="">
               <p className="text-center text-sm">
-                New to CraftsHand?{" "}
-                <Link to={"/signup"} className="text-primary">
-                  Create new account
+                Already have an account?{" "}
+                <Link to={"/login"} className="text-primary">
+                  Login
                 </Link>
               </p>
             </div>
-
             <div>
                 <LogInWithApp></LogInWithApp>
             </div>
-
           </div>
         </div>
       </div>
 
       <Footer></Footer>
-    </section>
+    </div>
   );
 };
 
-export default LogIn;
+export default SignUp;
