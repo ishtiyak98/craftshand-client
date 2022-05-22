@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 import Spinner from "../Shared/Spinner";
@@ -7,21 +8,27 @@ import Spinner from "../Shared/Spinner";
 const LogInWithApp = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   useEffect(() => {
     if (user) {
       Swal.fire({
+        title: "Logged In!",
+        text: "Successfully logged in",
         icon: "success",
-        title: "User Found",
       });
+      navigate(from, { replace: true });
       console.log(user);
     }
-  }, [user]);
+  }, [user, navigate, from]);
 
   useEffect(() => {
     if (error) {
       Swal.fire({
         icon: "error",
-        title: "Oops...",
+        title: "Error",
         text: `${error.message}`,
       });
     }

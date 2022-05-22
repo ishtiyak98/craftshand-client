@@ -1,68 +1,59 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import Spinner from "../Shared/Spinner";
 
 const Purchase = () => {
+  const [user] = useAuthState(auth);
   const { _id } = useParams();
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-    reset,
-  } = useForm();
+  const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
   //!---------- fetch a single tool ------------
   const { data: toolItem, isLoading } = useQuery("toolItem", () =>
     fetch(`http://localhost:5000/tools/${_id}`).then((res) => res.json())
   );
 
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(0);
 
-  useEffect(()=>{
+  useEffect(() => {
     if (toolItem) {
       setQuantity(toolItem.minOrder);
     }
-  },[toolItem]);
-
+  }, [toolItem]);
 
   if (isLoading) {
     return <Spinner></Spinner>;
   }
 
-  
-
   const handleDecrease = () => {
-
     if (quantity <= toolItem.minOrder) {
       toast.error("Minimum order-quantity reached");
+    } else {
+      setQuantity(quantity - 1);
     }
-    else{
-      setQuantity(quantity-1);
-    }
-    
   };
 
   const handleIncrease = () => {
-
     if (quantity >= toolItem.available) {
       toast.error("Maximum order-quantity reached");
+    } else {
+      setQuantity(quantity + 1);
     }
-    else{
-      setQuantity(quantity+1);
-    }
-  
   };
+
+  const quantityChange=(event)=>{
+    setQuantity(event.target.value)
+  }
 
   const handlePurchase = (data) => {
     console.log(data);
   };
-
-  console.log(toolItem);
 
   return (
     <section>
@@ -102,6 +93,7 @@ const Purchase = () => {
                         <input
                           type="text"
                           placeholder="Name"
+                          value={user?.displayName}
                           className="input input-bordered input-primary w-full max-w-lg"
                           {...register("name", { required: true })}
                         />
@@ -117,21 +109,16 @@ const Purchase = () => {
                         <input
                           type="text"
                           placeholder="Email"
+                          value={user?.email}
                           className="input input-bordered input-primary w-full max-w-lg"
                           {...register("email", {
                             required: true,
-                            pattern: {
-                              value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                              message: "Provide a valid Email",
-                            },
                           })}
                         />
                         <label className="label">
                           <span className="label-text-alt text-red-500">
                             {errors.email?.type === "required" &&
                               "Email is required"}
-                            {errors.email?.type === "pattern" &&
-                              errors.email.message}
                           </span>
                         </label>
                       </div>
@@ -180,10 +167,11 @@ const Purchase = () => {
                             -
                           </div>
                           <input
-                            type="text"
+                            type="number"
                             value={quantity}
                             className="input input-bordered input-primary text-center max-w-[80px]"
                             {...register("orderQuantity", { required: true })}
+                            onChange={quantityChange}
                           />
                           <div
                             className="btn btn-outline btn-primary text-white"
@@ -202,9 +190,10 @@ const Purchase = () => {
 
                       <div className="my-3 flex justify-center">
                         <input
-                          className="btn btn-primary w-3/4 text-white  text-base font-normal"
+                          className="btn btn-primary w-3/4 text-white  text-base font-normal disabled:bg-slate-200 disabled:text-black"
                           type="submit"
                           value="Purchase"
+                          disabled={quantity < toolItem.minOrder || quantity > toolItem.available}
                         />
                       </div>
                     </form>

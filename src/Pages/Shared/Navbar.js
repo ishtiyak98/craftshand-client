@@ -1,17 +1,27 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
+import auth from "../../firebase.init";
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+
+  const handleSignOut = ()=>{
+    Swal.fire({
+      title: "Logged Out!",
+      text: "Successfully logged Out",
+      icon: "success",
+    });
+    signOut(auth);
+  }
+
+
   const navItem = (
     <>
       <li>
         <NavLink to={"/"}>Home</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/appointment"}>Appointment</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/review"}>Reviews</NavLink>
       </li>
       <li>
         <NavLink to={"/about"}>About</NavLink>
@@ -19,9 +29,16 @@ const Navbar = () => {
       <li>
         <NavLink to={"/blogs"}>Blogs</NavLink>
       </li>
-      <li>
-        <NavLink to={"/login"}>Login</NavLink>
-      </li>
+        {
+          user &&<li><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
+        }
+        {
+          user && <li className="w-max"><NavLink to={"/user-profile"} >{user.displayName}</NavLink></li>
+        }
+        {
+          user ? <li><NavLink to={"/login"} onClick={handleSignOut}>Logout</NavLink></li> : <li><NavLink to={"/login"}>Login</NavLink></li>
+        }
+    
     </>
   );
 
@@ -49,42 +66,15 @@ const Navbar = () => {
             tabIndex="0"
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-primary rounded-box w-52"
           >
-            <li>
-              <NavLink to={"/"}>Home</NavLink>
-            </li>
-            <li tabIndex="0">
-              <a className="justify-between">
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {navItem}
           </ul>
         </div>
-        <Link to={"/"} className="normal-case text-xl">
+        <Link to={"/"} className="normal-case text-2xl font-semibold">
           CraftsHand
         </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">
+        <ul className="menu menu-horizontal space-x-4">
           {navItem}
         </ul>
       </div>

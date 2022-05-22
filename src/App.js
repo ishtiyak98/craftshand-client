@@ -8,6 +8,7 @@ import SignUp from "./Pages/LogIn/SignUp";
 import NotFoundPage from "./Pages/NotFoundPage/NotFoundPage";
 import Purchase from "./Pages/Purchase/Purchase";
 import Navbar from "./Pages/Shared/Navbar";
+import ProtectedRoute from "./Pages/Shared/ProtectedRoute";
 
 function App() {
   return (
@@ -18,11 +19,18 @@ function App() {
         <Route path="/login" element={<LogIn></LogIn>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
-        <Route path="/purchase/:_id" element={<Purchase></Purchase>}></Route>
+        <Route
+          path="/purchase/:_id"
+          element={
+            <ProtectedRoute>
+              <Purchase></Purchase>
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route path="*" element={<NotFoundPage></NotFoundPage>}></Route>
       </Routes>
 
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 }

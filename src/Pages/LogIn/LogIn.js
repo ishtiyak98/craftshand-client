@@ -1,28 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import auth from "../../firebase.init";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
+import Spinner from "../Shared/Spinner";
 import LogInWithApp from "./LogInWithApp";
 
 const LogIn = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const [loginMessage, setLoginMessage] = useState("");
-    const [textColor, setTextColor] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+  const { register, formState: { errors }, handleSubmit } = useForm();
+
+  const [loginMessage, setLoginMessage] = useState("");
+  const [textColor, setTextColor] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
 
-    const handleLogin = () => {
-
+  //!-------- handle successful Login --------
+  useEffect(()=>{
+    if (user) {
+      Swal.fire({
+        title: "Logged In!",
+        text: "Successfully logged in",
+        icon: "success",
+      });
+      navigate(from, { replace: true });
     }
+  }, [user, navigate, from]);
+
+
+  //!-------- handle Login error --------
+  useEffect(()=>{
+    if (error) {
+      setLoginMessage(error.message);
+      setTextColor("text-red-500");
+    }
+  }, [error]);
+
+  if (loading) {
+    return <Spinner></Spinner>;
+  }
+
+
+  //!-------- handle form on-submit --------
+  const handleLogin = (data) => {
+    signInWithEmailAndPassword(data.email, data.password);
+  } 
 
   return (
     <section>
-      <Navbar></Navbar>
+      
 
       <div className="flex h-screen justify-center items-center  bg-slate-100">
         <div className="card w-11/12 lg:w-[500px] bg-base-100 shadow-xl">
           <div className="card card-body">
-            <h2 className="text-4xl font-medium text-center">Login</h2>
+            <span className="text-4xl font-medium text-center text-primary hover:cursor-pointer mb-2" onClick={()=>{navigate("/")}}>CraftsHand</span>
+            <h4 className="text-xl font-medium text-center">Login</h4>
             <form onSubmit={handleSubmit(handleLogin)}>
               <div className="form-control w-full max-w-lg">
                 <label className="label">
@@ -101,7 +139,7 @@ const LogIn = () => {
         </div>
       </div>
 
-      <Footer></Footer>
+      
     </section>
   );
 };

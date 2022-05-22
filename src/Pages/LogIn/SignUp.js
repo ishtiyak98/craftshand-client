@@ -1,31 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import auth from "../../firebase.init";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
+import Spinner from "../Shared/Spinner";
 import LogInWithApp from "./LogInWithApp";
 
 const SignUp = () => {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm();
-  const [loginMessage, setLoginMessage] = useState("");
+  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating] = useUpdateProfile(auth);
+  const { register, formState: { errors }, handleSubmit } = useForm();
+
+  const [signupMessage, setSignupMessage] = useState(""); 
   const [textColor, setTextColor] = useState("");
 
-  const handleSignUp = () => {
+  const navigate = useNavigate();
 
+  //!-------- handle successful Signup --------
+  useEffect(()=>{
+    if (user) {
+      Swal.fire({
+        title: "Account created!",
+        text: "You can login now",
+        icon: "success",
+      });
+      navigate("/login");
+    }
+  }, [user, navigate]);
+
+
+  //!-------- handle Signup error --------
+  useEffect(()=>{
+    if (error) {
+      setSignupMessage(error.message);
+      setTextColor("text-red-500");
+    }
+}, [error]);
+
+//!-------- loading-spinner --------
+if (loading || updating) {
+  return <Spinner></Spinner>;
+};
+
+  const handleSignUp = async(data) => {
+    console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
   }
 
   return (
     <div>
-      <Navbar></Navbar>
 
       <div className="flex h-screen justify-center items-center  bg-slate-100">
         <div className="card w-11/12 lg:w-[500px] bg-base-100 shadow-xl">
           <div className="card card-body">
-            <h2 className="text-4xl font-medium text-center">Signup</h2>
+            <span className="text-4xl font-medium text-center text-primary hover:cursor-pointer mb-2" onClick={()=>{navigate("/")}}>CraftsHand</span>
+            <h4 className="text-xl font-medium text-center">Signup</h4>
             <form onSubmit={handleSubmit(handleSignUp)}>
 
             <div className="form-control w-full max-w-lg">
@@ -99,11 +132,11 @@ const SignUp = () => {
                 <input
                   className="btn btn-primary text-white w-full text-base font-normal"
                   type="submit"
-                  value="Login"
+                  value="Signup"
                 />
               </div>
               <p className={`text-center ${textColor} text-sm`}>
-                {loginMessage && loginMessage}
+                  {signupMessage && signupMessage}
               </p>
             </form>
 
@@ -122,7 +155,7 @@ const SignUp = () => {
         </div>
       </div>
 
-      <Footer></Footer>
+   
     </div>
   );
 };
