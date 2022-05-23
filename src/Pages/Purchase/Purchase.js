@@ -12,25 +12,35 @@ import Spinner from "../Shared/Spinner";
 const Purchase = () => {
   const [user] = useAuthState(auth);
   const { _id } = useParams();
-  const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
   //!---------- fetch a single tool ------------
-  const { data: toolItem, isLoading } = useQuery("toolItem", () =>
+  const { data: toolItem, isLoading, refetch } = useQuery("toolItem", () =>
     fetch(`http://localhost:5000/tools/${_id}`).then((res) => res.json())
   );
 
   const [quantity, setQuantity] = useState(0);
 
+  //!---------- set Quantity ----------
   useEffect(() => {
     if (toolItem) {
       setQuantity(toolItem.minOrder);
     }
   }, [toolItem]);
 
+
+  //!---------- loading spinner ----------
   if (isLoading) {
     return <Spinner></Spinner>;
   }
 
+
+  //!---------- Quantity decrease button ---------- 
   const handleDecrease = () => {
     if (quantity <= toolItem.minOrder) {
       toast.error("Minimum order-quantity reached");
@@ -39,6 +49,8 @@ const Purchase = () => {
     }
   };
 
+
+  //!---------- Quantity increase button ---------- 
   const handleIncrease = () => {
     if (quantity >= toolItem.available) {
       toast.error("Maximum order-quantity reached");
@@ -47,12 +59,74 @@ const Purchase = () => {
     }
   };
 
-  const quantityChange=(event)=>{
-    setQuantity(event.target.value)
-  }
+  //!---------- Quantity input field ----------
+  const quantityChange = (event) => {
+    setQuantity(parseInt(event.target.value));
+  };
 
+
+  //!---------- handle submit ----------
   const handlePurchase = (data) => {
-    console.log(data);
+
+    const orderDetails = {
+      customerName : data.name,
+      email: data.email,
+      address: data.address,
+      phone: data.phone,
+      itemName:  toolItem.name,
+
+      quantity: quantity,
+      price: (parseInt(toolItem.price))*(parseInt(quantity)),
+    }
+    console.log(orderDetails);
+
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(orderDetails),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.acknowledged) {
+        toast.success("Order Placed successfully");
+        reset();
+        const updateDetails = {
+          name: toolItem.name,
+          image: toolItem.image,
+          description: toolItem.description,
+          minOrder:toolItem.minOrder,
+          available: toolItem.available - quantity,
+          price:toolItem.price
+
+        }
+
+        updateItem(updateDetails);
+
+      }
+    })
+
+    const updateItem = (updateDetails)=>{
+
+      fetch(`http://localhost:5000/tools/${_id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateDetails),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          refetch();
+        }
+      });
+
+    };
+
   };
 
   return (
@@ -82,6 +156,9 @@ const Purchase = () => {
               <h4 className="text-xl font-medium">
                 Price : ${toolItem.price} (per/unit)
               </h4>
+              {/* <h4 className=" font-medium">
+                1 unit = 5 items
+              </h4> */}
             </div>
 
             <div>
@@ -154,6 +231,26 @@ const Purchase = () => {
                       </div>
 
                       <div className="form-control w-full max-w-lg">
+                        <div className="flex">
+                          <label className="label">
+                            <p className="label-text text-base">Price : </p>
+                          </label>
+                          <input
+                            type="text"
+                            value={(parseInt(toolItem.price))*(parseInt(quantity))}
+                            className="input input-bordered input-primary max-w-[110px]"
+                            {...register("price", { required: true })}
+                          />
+                        </div>
+                        <label className="label">
+                          <span className="label-text-alt text-red-500">
+                            {errors.price?.type === "required" &&
+                              "price is required"}
+                          </span>
+                        </label>
+                      </div>
+
+                      <div className="form-control w-full max-w-lg">
                         <label className="label">
                           <p className="label-text text-base text-center">
                             Order Quantity
@@ -193,7 +290,10 @@ const Purchase = () => {
                           className="btn btn-primary w-3/4 text-white  text-base font-normal disabled:bg-slate-200 disabled:text-black"
                           type="submit"
                           value="Purchase"
-                          disabled={quantity < toolItem.minOrder || quantity > toolItem.available}
+                          disabled={
+                            quantity < toolItem.minOrder ||
+                            quantity > toolItem.available
+                          }
                         />
                       </div>
                     </form>
