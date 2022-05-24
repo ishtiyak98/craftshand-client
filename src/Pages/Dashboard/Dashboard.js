@@ -44,13 +44,13 @@ const Dashboard = () => {
             {admin && (
               <>
                 <li className="bg-gray-400 text-white rounded-lg shadow-lg">
-                  <NavLink to={"users"}>All Users</NavLink>
+                  <NavLink to={"users"}>Manage Users</NavLink>
                 </li>
                 <li className="bg-gray-400 text-white rounded-lg shadow-lg">
-                  <NavLink to={"users"}>Manage All Orders</NavLink>
+                  <NavLink to={"manage-orders"}>Manage All Orders</NavLink>
                 </li>
                 <li className="bg-gray-400 text-white rounded-lg shadow-lg">
-                  <NavLink to={"users"}>Add Product</NavLink>
+                  <NavLink to={"add-product"}>Add Product</NavLink>
                 </li>
                 <li className="bg-gray-400 text-white rounded-lg shadow-lg">
                   <NavLink to={"profile"}>My profile</NavLink>

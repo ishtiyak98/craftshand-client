@@ -74,9 +74,9 @@ const Purchase = () => {
       address: data.address,
       phone: data.phone,
       itemName:  toolItem.name,
-
       quantity: quantity,
       price: (parseInt(toolItem.price))*(parseInt(quantity)),
+      paymentStatus: "unpaid",
     }
     console.log(orderDetails);
 
@@ -101,6 +101,7 @@ const Purchase = () => {
           minOrder:toolItem.minOrder,
           available: toolItem.available - quantity,
           price:toolItem.price
+          
 
         }
 

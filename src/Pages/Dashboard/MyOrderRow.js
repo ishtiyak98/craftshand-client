@@ -41,6 +41,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
       <td>{order.itemName}</td>
       <td>{order.quantity}</td>
       <td>{order.price}</td>
+      <td>{order.paymentStatus}</td>
       <td className="space-x-3">
         <button className="btn btn-sm btn-primary text-white font-medium rounded-none">Payment</button>
         <button className="btn btn-sm btn-primary text-white font-medium rounded-none" onClick={()=>{handleCancel(order._id)}}>cancel</button>

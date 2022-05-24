@@ -46,9 +46,9 @@ const UserRow = ({ user, index, refetch }) => {
         >
           Make Admin
         </button>
-        <button className="btn btn-sm btn-primary text-white font-medium rounded-none">
+        {/* <button className="btn btn-sm btn-primary text-white font-medium rounded-none">
           Remove User
-        </button>
+        </button> */}
       </td>
     </tr>
   );

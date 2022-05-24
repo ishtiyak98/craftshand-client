@@ -14,7 +14,7 @@ const Tools = () => {
   }
 
   return (
-    <div className="my-28 px-6 lg:px-24">
+    <div className="py-28 px-6 lg:px-24">
       <h2 className="text-5xl text-center lg:text-left font-semibold mb-12">
         Our <span className="text-primary">Tools</span>
       </h2>

@@ -30,6 +30,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/blogs"}>Blogs</NavLink>
       </li>
+      <li className="w-max">
+        <NavLink to={"/portfolio"}>My Portfolio</NavLink>
+      </li>
         {
           user &&<li><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
         }

@@ -9,7 +9,7 @@ import Spinner from './Spinner';
 
 const AdminProtected = ({children}) => {
     const [user, loading] = useAuthState(auth);
-    const [admin, adminLoading] = useAdmin(user) 
+    const [admin, adminLoading] = useAdmin(user);
     let location = useLocation();
 
     if (loading || adminLoading) {
@@ -18,8 +18,8 @@ const AdminProtected = ({children}) => {
 
     if (!user || !admin) {
         signOut(auth);
-        toast.error("unauthorized access")
-        return <Navigate to="/login" state={{ from: location }} replace />;
+        toast.error("unauthorized access");
+        return <Navigate to="/" state={{ from: location }} replace />;
     }
 
     return children;

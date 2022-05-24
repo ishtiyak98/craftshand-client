@@ -51,6 +51,7 @@ const MyOrders = () => {
               <th className="text-base">Product Name</th>
               <th className="text-base">Quantity</th>
               <th className="text-base">Total Price</th>
+              <th className="text-base">Payment Status</th>
               <th className="text-base">Manage Order</th>
             </tr>
           </thead>
