@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
+import { GiEclipseSaw } from 'react-icons/gi';
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
@@ -70,7 +71,10 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to={"/"} className="normal-case text-2xl font-semibold">
-          CraftsHand
+          <div className="flex items-center">
+            <GiEclipseSaw size={"1.4em"}/>
+            <div className="ml-1">CraftsHand</div>
+          </div>
         </Link>
       </div>
       <div className="navbar-end ">
