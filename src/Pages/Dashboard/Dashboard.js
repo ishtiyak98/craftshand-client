@@ -25,7 +25,7 @@ const Dashboard = () => {
               <NavLink to={"orders"}>My Orders</NavLink>
             </li>
             <li className="bg-gray-400 text-white rounded-lg shadow-lg">
-              <NavLink to={"review"}>My Review</NavLink>
+              <NavLink to={"review"}>Add a Review</NavLink>
             </li>
             <li className="bg-gray-400 text-white rounded-lg shadow-lg">
               <NavLink className="" to={"profile"}>My profile</NavLink>

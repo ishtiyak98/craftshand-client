@@ -292,8 +292,7 @@ const Purchase = () => {
                           type="submit"
                           value="Purchase"
                           disabled={
-                            quantity < toolItem.minOrder ||
-                            quantity > toolItem.available
+                            quantity < toolItem.minOrder || quantity > toolItem.available
                           }
                         />
                       </div>
