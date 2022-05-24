@@ -1,9 +1,15 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Outlet } from "react-router-dom";
+import auth from "../../firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 
 const Dashboard = () => {
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+
   return (
     <section>
       <Navbar></Navbar>
@@ -21,15 +27,36 @@ const Dashboard = () => {
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-72 bg-gray-100 text-base-content space-y-5">
             {/* <!-- Sidebar content here --> */}
-            <li className="bg-gray-400 text-white rounded-lg shadow-lg">
-              <NavLink to={"orders"}>My Orders</NavLink>
-            </li>
-            <li className="bg-gray-400 text-white rounded-lg shadow-lg">
-              <NavLink to={"review"}>Add a Review</NavLink>
-            </li>
-            <li className="bg-gray-400 text-white rounded-lg shadow-lg">
-              <NavLink className="" to={"profile"}>My profile</NavLink>
-            </li>
+            {!admin && (
+              <>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"orders"}>My Orders</NavLink>
+                </li>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"review"}>Add a Review</NavLink>
+                </li>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"profile"}>My profile</NavLink>
+                </li>
+              </>
+            )}
+
+            {admin && (
+              <>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"users"}>All Users</NavLink>
+                </li>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"users"}>Manage All Orders</NavLink>
+                </li>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"users"}>Add Product</NavLink>
+                </li>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"profile"}>My profile</NavLink>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
