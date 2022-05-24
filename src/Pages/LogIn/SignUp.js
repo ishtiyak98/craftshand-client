@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
+import useToken from "../../Hooks/useToken";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import Spinner from "../Shared/Spinner";
@@ -18,6 +19,7 @@ const SignUp = () => {
   const [textColor, setTextColor] = useState("");
 
   const navigate = useNavigate();
+  const [token] = useToken(user);
 
   //!-------- handle successful Signup --------
   useEffect(()=>{
@@ -27,6 +29,7 @@ const SignUp = () => {
         text: "You can login now",
         icon: "success",
       });
+      console.log(user);
       navigate("/login");
     }
   }, [user, navigate]);
@@ -46,7 +49,6 @@ if (loading || updating) {
 };
 
   const handleSignUp = async(data) => {
-    console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
   }

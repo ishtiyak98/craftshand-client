@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
+import useToken from "../../Hooks/useToken";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import Spinner from "../Shared/Spinner";
@@ -15,6 +16,7 @@ const LogIn = () => {
 
   const [loginMessage, setLoginMessage] = useState("");
   const [textColor, setTextColor] = useState("");
+  const [token] = useToken(user);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,7 +25,7 @@ const LogIn = () => {
 
   //!-------- handle successful Login --------
   useEffect(()=>{
-    if (user) {
+    if (token) {
       Swal.fire({
         title: "Logged In!",
         text: "Successfully logged in",
@@ -31,7 +33,7 @@ const LogIn = () => {
       });
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
 
   //!-------- handle Login error --------
