@@ -24,8 +24,8 @@ const ManageOrders = () => {
       </h4>
 
 
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th className="text-base">Sl.</th>
