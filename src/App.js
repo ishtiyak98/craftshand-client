@@ -8,6 +8,7 @@ import Blogs from "./Pages/Blogs/Blogs";
 import AddProduct from "./Pages/Dashboard/Admin/AddProduct";
 import AllUsers from "./Pages/Dashboard/Admin/AllUsers";
 import ManageOrders from "./Pages/Dashboard/Admin/ManageOrders";
+import ManageProduct from "./Pages/Dashboard/Admin/ManageProduct";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
@@ -79,6 +80,14 @@ function App() {
             element={
               <AdminProtected>
                 <AddProduct></AddProduct>
+              </AdminProtected>
+            }
+          ></Route>
+          <Route
+            path="manage-product"
+            element={
+              <AdminProtected>
+                <ManageProduct></ManageProduct>
               </AdminProtected>
             }
           ></Route>

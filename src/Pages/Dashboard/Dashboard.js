@@ -53,6 +53,9 @@ const Dashboard = () => {
                   <NavLink to={"add-product"}>Add Product</NavLink>
                 </li>
                 <li className="bg-gray-400 text-white rounded-lg shadow-lg">
+                  <NavLink to={"manage-product"}>Manage Products</NavLink>
+                </li>
+                <li className="bg-gray-400 text-white rounded-lg shadow-lg">
                   <NavLink to={"profile"}>My profile</NavLink>
                 </li>
               </>

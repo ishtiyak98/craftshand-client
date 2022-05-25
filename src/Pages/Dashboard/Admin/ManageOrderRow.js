@@ -26,8 +26,8 @@ const ManageOrderRow = ({index, order, refetch}) => {
   //!------------- remove an unpaid order --------------
   const handleRemoveOrder = (id) => {
     Swal.fire({
-      title: "Cancel Order",
-      text: `Do you want to cancel ${order.itemName}?`,
+      title: "Remove Order",
+      text: `Do you want to remove ${order.itemName} order?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: "Yes",
