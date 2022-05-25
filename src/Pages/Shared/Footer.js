@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <section className="py-6 ">
-      <div className="grid grid-cols-1 lg:grid-cols-4 py-5 px-6 lg:px-24">
+      <div className="grid grid-cols-1 lg:grid-cols-4 py-5 px-6 lg:px-24 gap-y-10">
         <div>
-          <h4 className="text-xl font-semibold mb-6">Quick Information</h4>
+          <h4 className="text-xl font-semibold mb-6 mb">Quick Information</h4>
           <div className="space-y-4">
             <div className="flex space-x-2">
               <div className="text-primary">

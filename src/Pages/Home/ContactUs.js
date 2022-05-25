@@ -12,7 +12,7 @@ const ContactUs = () => {
         backgroundSize: "cover",
         // backgroundAttachment: "fixed",
       }}
-      className="h-[350px] lg:h-[600px] mt-40 mb-16 px-6 lg:px-24 flex items-center"
+      className="h-[350px] lg:h-[600px] mt-40 mb-14 px-6 lg:px-24 flex items-center"
     >
       <div className="lg:w-3/4 mx-auto ">
         <div>
