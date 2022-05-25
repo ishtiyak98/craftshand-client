@@ -43,7 +43,7 @@ const Reviews = () => {
                     <div className="mx-auto flex justify-center mb-3">
                         <div className="flex text-primary">
                             {
-                                [...Array(parseInt(review.ratings))].map( (item,index) => <FaStar/>)
+                                [...Array(parseInt(review.ratings))].map( (item,index) => <FaStar key={index}/>)
                                 
                             }
                         </div>
