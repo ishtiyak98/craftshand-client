@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 
@@ -40,10 +41,13 @@ const MyOrderRow = ({ order, index, refetch }) => {
       <th>{index + 1}</th>
       <td>{order.itemName}</td>
       <td>{order.quantity}</td>
-      <td>{order.price}</td>
-      <td>{order.paymentStatus}</td>
+      <td>${order.price}</td>
+      <td>
+        <p>{order.paymentStatus}</p>
+        <p className="text-primary">{order.transactionId && "Tran ID: "+order.transactionId }</p>
+      </td>
       <td className="space-x-3">
-        <button className="btn btn-sm btn-primary text-white font-medium rounded-none">Payment</button>
+        <Link to={`/dashboard/payment/${order._id}`}><button className="btn btn-sm btn-primary text-white font-medium rounded-none disabled:disabled:bg-slate-200 disabled:text-black" disabled={order.paymentStatus === "paid"}>Payment</button></Link>
         <button className="btn btn-sm btn-primary text-white font-medium rounded-none" onClick={()=>{handleCancel(order._id)}}>cancel</button>
       </td>
     </tr>

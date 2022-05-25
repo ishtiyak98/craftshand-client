@@ -12,6 +12,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import MyOrders from "./Pages/Dashboard/MyOrders";
 import MyProfile from "./Pages/Dashboard/MyProfile";
 import MyReview from "./Pages/Dashboard/MyReview";
+import Payment from "./Pages/Dashboard/Payment";
 import Home from "./Pages/Home/Home";
 import LogIn from "./Pages/LogIn/LogIn";
 import SignUp from "./Pages/LogIn/SignUp";
@@ -55,6 +56,7 @@ function App() {
             admin ? <Route index element={<AdminProtected><AllUsers></AllUsers></AdminProtected>}></Route> : <Route index element={<MyOrders></MyOrders>}></Route>
           }
           <Route path="orders" element={<MyOrders></MyOrders>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="review" element={<MyReview></MyReview>}></Route>
           <Route
             path="users"
