@@ -50,7 +50,7 @@ const MyReview = () => {
             <form onSubmit={handleSubmit(reviewSubmit)}>
               <div className="form-control w-full">
                 <textarea
-                  placeholder="Descroption"
+                  placeholder="Description"
                   className="textarea textarea-primary textarea-bordered w-full "
                   {...register("description", { required: true })}
                 />

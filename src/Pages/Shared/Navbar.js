@@ -37,7 +37,7 @@ const Navbar = () => {
           user &&<li><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
         }
         {
-          user && <li className="w-max"><NavLink to={"/user-profile"} >{user.displayName}</NavLink></li>
+          user && <li className="w-max"><NavLink to={"/dashboard/profile"} >{user.displayName}</NavLink></li>
         }
         {
           user ? <li><NavLink to={"/login"} onClick={handleSignOut}>Logout</NavLink></li> : <li><NavLink to={"/login"}>Login</NavLink></li>
