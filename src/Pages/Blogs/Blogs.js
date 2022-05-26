@@ -7,9 +7,11 @@ const Blogs = () => {
     <section>
       <Navbar></Navbar>
       <div className="py-12 px-6 lg:py-24 lg:px-24 bg-slate-100 space-y-12">
-        <div class="card w-full bg-base-100 shadow-xl">
-          <div class="card-body">
-            <h2 class="card-title text-2xl">How will you improve the performance of a React Application?</h2>
+        <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title text-2xl">
+              How will you improve the performance of a React Application?
+            </h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
               quas dolor quaerat exercitationem neque impedit amet officia,
@@ -26,9 +28,11 @@ const Blogs = () => {
           </div>
         </div>
 
-        <div class="card w-full bg-base-100 shadow-xl">
-          <div class="card-body">
-            <h2 class="card-title text-2xl">How will you improve the performance of a React Application?</h2>
+        <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title text-2xl">
+              How will you improve the performance of a React Application?
+            </h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
               quas dolor quaerat exercitationem neque impedit amet officia,
@@ -45,9 +49,11 @@ const Blogs = () => {
           </div>
         </div>
 
-        <div class="card w-full bg-base-100 shadow-xl">
-          <div class="card-body">
-            <h2 class="card-title text-2xl">How will you improve the performance of a React Application?</h2>
+        <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title text-2xl">
+              How will you improve the performance of a React Application?
+            </h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
               quas dolor quaerat exercitationem neque impedit amet officia,
@@ -64,9 +70,11 @@ const Blogs = () => {
           </div>
         </div>
 
-        <div class="card w-full bg-base-100 shadow-xl">
-          <div class="card-body">
-            <h2 class="card-title text-2xl">How will you improve the performance of a React Application?</h2>
+        <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title text-2xl">
+              How will you improve the performance of a React Application?
+            </h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
               quas dolor quaerat exercitationem neque impedit amet officia,
@@ -83,9 +91,11 @@ const Blogs = () => {
           </div>
         </div>
 
-        <div class="card w-full bg-base-100 shadow-xl">
-          <div class="card-body">
-            <h2 class="card-title text-2xl">How will you improve the performance of a React Application?</h2>
+        <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card-body">
+            <h2 className="card-title text-2xl">
+              How will you improve the performance of a React Application?
+            </h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
               quas dolor quaerat exercitationem neque impedit amet officia,

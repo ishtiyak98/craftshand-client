@@ -4,7 +4,11 @@ import Spinner from "../../Shared/Spinner";
 import UserRow from "./UserRow";
 
 const AllUsers = () => {
-  const { data: users, isLoading, refetch } = useQuery("users", () =>
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
     fetch("http://localhost:5000/users", {
       method: "GET",
       headers: {
@@ -23,8 +27,8 @@ const AllUsers = () => {
         Total Users : {users.length}
       </h4>
 
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div className="overflow-x-auto">
+        <table className="table w-full">
           <thead>
             <tr>
               <th className="text-base">Sl.</th>
@@ -34,9 +38,14 @@ const AllUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {
-                users.map((user, index)=> <UserRow key={index} index={index} user={user} refetch={refetch}></UserRow>)
-            }
+            {users.map((user, index) => (
+              <UserRow
+                key={index}
+                index={index}
+                user={user}
+                refetch={refetch}
+              ></UserRow>
+            ))}
           </tbody>
         </table>
       </div>

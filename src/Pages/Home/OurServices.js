@@ -11,11 +11,11 @@ const OurServices = () => {
         Our <span className="text-primary">Services</span>
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-        <div class="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
+        <div className="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
           <div className="p-10 lg:py-12 lg:px-20 bg-gray-900 text-white flex justify-center items-center group-hover:bg-primary">
             <BsTools size={"4.7em"} />
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <h2 className="text-3xl font-medium mb-4 text-center lg:text-left">
               Custom Tools
             </h2>
@@ -27,27 +27,27 @@ const OurServices = () => {
           </div>
         </div>
 
-
-        <div class="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
+        <div className="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
           <div className="p-10 lg:py-12 lg:px-20 bg-gray-900 text-white flex justify-center items-center group-hover:bg-primary">
             <FaSitemap size={"4.8em"} />
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <h2 className="text-3xl font-medium mb-4 text-center lg:text-left">
               Tools Distribution
             </h2>
 
             <p className="text-base text-center lg:text-left">
-                We give exiting offers for our close distributors to sell our product in their local market.
+              We give exiting offers for our close distributors to sell our
+              product in their local market.
             </p>
           </div>
         </div>
 
-        <div class="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
+        <div className="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
           <div className="p-10 lg:py-12 lg:px-20 bg-gray-900 text-white flex justify-center items-center group-hover:bg-primary">
             <FaTruck size={"4.8em"} />
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <h2 className="text-3xl font-medium mb-4 text-center lg:text-left">
               Ground Transport
             </h2>
@@ -59,11 +59,11 @@ const OurServices = () => {
           </div>
         </div>
 
-        <div class="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
+        <div className="card lg:card-side bg-base-100 shadow-xl group hover:ring-2 hover:ring-primary">
           <div className="p-10 lg:py-12 lg:px-20 bg-gray-900 text-white flex justify-center items-center group-hover:bg-primary">
             <FaFighterJet size={"4.8em"} />
           </div>
-          <div class="card-body">
+          <div className="card-body">
             <h2 className="text-3xl font-medium mb-4 text-center lg:text-left">
               Logistic Service
             </h2>

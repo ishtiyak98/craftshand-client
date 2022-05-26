@@ -8,13 +8,22 @@ const AddProduct = () => {
   const handleAddProduct = (data) => {
     console.log(data);
 
+    const ItemDetails = {
+      name : data.name,
+      image: data.image,
+      description: data.description,
+      minOrder: parseInt(data.minOrder),
+      available: parseInt(data.available),
+      price: parseInt(data.price)
+    }
+
     fetch("http://localhost:5000/tools", {
       method: "POST",
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(ItemDetails),
     })
       .then((res) => res.json())
       .then((data) => {

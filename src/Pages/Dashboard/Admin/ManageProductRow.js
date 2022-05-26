@@ -36,8 +36,8 @@ const ManageProductRow = ({ tools, index, refetch }) => {
       <td>{index + 1}</td>
       <td>{tools.name}</td>
       <td>
-        <div class="avatar">
-          <div class="w-10 rounded-full">
+        <div className="avatar">
+          <div className="w-10 rounded-full">
             <img src={tools.image} alt="" />
           </div>
         </div>
