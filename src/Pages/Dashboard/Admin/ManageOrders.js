@@ -4,8 +4,12 @@ import Spinner from "../../Shared/Spinner";
 import ManageOrderRow from "./ManageOrderRow";
 
 const ManageOrders = () => {
-    const { data: orders, isLoading, refetch } = useQuery("orders", () =>
-    fetch("http://localhost:5000/order", {
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery("orders", () =>
+    fetch("https://arcane-badlands-58139.herokuapp.com/order", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,7 +27,6 @@ const ManageOrders = () => {
         Total Orders : {orders.length}
       </h4>
 
-
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
@@ -37,9 +40,14 @@ const ManageOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {
-                orders.map((order, index)=> <ManageOrderRow key={order._id} index={index} order={order} refetch={refetch}></ManageOrderRow>)
-            }
+            {orders.map((order, index) => (
+              <ManageOrderRow
+                key={order._id}
+                index={index}
+                order={order}
+                refetch={refetch}
+              ></ManageOrderRow>
+            ))}
           </tbody>
         </table>
       </div>

@@ -20,8 +20,14 @@ const Purchase = () => {
   } = useForm();
 
   //!---------- fetch a single tool ------------
-  const { data: toolItem, isLoading, refetch } = useQuery("toolItem", () =>
-    fetch(`http://localhost:5000/tools/${_id}`).then((res) => res.json())
+  const {
+    data: toolItem,
+    isLoading,
+    refetch,
+  } = useQuery("toolItem", () =>
+    fetch(`https://arcane-badlands-58139.herokuapp.com/tools/${_id}`).then(
+      (res) => res.json()
+    )
   );
 
   const [quantity, setQuantity] = useState(0);
@@ -33,14 +39,12 @@ const Purchase = () => {
     }
   }, [toolItem]);
 
-
   //!---------- loading spinner ----------
   if (isLoading) {
     return <Spinner></Spinner>;
   }
 
-
-  //!---------- Quantity decrease button ---------- 
+  //!---------- Quantity decrease button ----------
   const handleDecrease = () => {
     if (quantity <= toolItem.minOrder) {
       toast.error("Minimum order-quantity reached");
@@ -49,8 +53,7 @@ const Purchase = () => {
     }
   };
 
-
-  //!---------- Quantity increase button ---------- 
+  //!---------- Quantity increase button ----------
   const handleIncrease = () => {
     if (quantity >= toolItem.available) {
       toast.error("Maximum order-quantity reached");
@@ -64,23 +67,21 @@ const Purchase = () => {
     setQuantity(parseInt(event.target.value));
   };
 
-
   //!---------- handle submit ----------
   const handlePurchase = (data) => {
-
     const orderDetails = {
-      customerName : data.name,
+      customerName: data.name,
       email: data.email,
       address: data.address,
       phone: data.phone,
-      itemName:  toolItem.name,
+      itemName: toolItem.name,
       quantity: quantity,
-      price: (parseInt(toolItem.price))*(parseInt(quantity)),
+      price: parseInt(toolItem.price) * parseInt(quantity),
       paymentStatus: "unpaid",
-    }
+    };
     console.log(orderDetails);
 
-    fetch("http://localhost:5000/order", {
+    fetch("https://arcane-badlands-58139.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -88,47 +89,41 @@ const Purchase = () => {
       },
       body: JSON.stringify(orderDetails),
     })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      if (data.acknowledged) {
-        toast.success("Order Placed successfully");
-        reset();
-        const updateDetails = {
-          name: toolItem.name,
-          image: toolItem.image,
-          description: toolItem.description,
-          minOrder:toolItem.minOrder,
-          available: toolItem.available - quantity,
-          price:toolItem.price
-          
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success("Order Placed successfully");
+          reset();
+          const updateDetails = {
+            name: toolItem.name,
+            image: toolItem.image,
+            description: toolItem.description,
+            minOrder: toolItem.minOrder,
+            available: toolItem.available - quantity,
+            price: toolItem.price,
+          };
 
+          updateItem(updateDetails);
         }
+      });
 
-        updateItem(updateDetails);
-
-      }
-    })
-
-    const updateItem = (updateDetails)=>{
-
-      fetch(`http://localhost:5000/tools/${_id}`, {
+    const updateItem = (updateDetails) => {
+      fetch(`https://arcane-badlands-58139.herokuapp.com/tools/${_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updateDetails),
       })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged) {
-          refetch();
-        }
-      });
-
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.acknowledged) {
+            refetch();
+          }
+        });
     };
-
   };
 
   return (
@@ -239,7 +234,9 @@ const Purchase = () => {
                           </label>
                           <input
                             type="text"
-                            value={(parseInt(toolItem.price))*(parseInt(quantity))}
+                            value={
+                              parseInt(toolItem.price) * parseInt(quantity)
+                            }
                             className="input input-bordered input-primary max-w-[110px]"
                             {...register("price", { required: true })}
                           />
@@ -293,7 +290,8 @@ const Purchase = () => {
                           type="submit"
                           value="Purchase"
                           disabled={
-                            quantity < toolItem.minOrder || quantity > toolItem.available
+                            quantity < toolItem.minOrder ||
+                            quantity > toolItem.available
                           }
                         />
                       </div>

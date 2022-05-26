@@ -12,14 +12,17 @@ const MyOrders = () => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
-  const { data : orders, isLoading, refetch } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/order/${user.email}`, {
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery("orders", () =>
+    fetch(`https://arcane-badlands-58139.herokuapp.com/order/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    })
-    .then((res) => {
+    }).then((res) => {
       if (res.status === 401 || res.status === 403) {
         localStorage.removeItem("accessToken");
         signOut(auth);
@@ -33,7 +36,6 @@ const MyOrders = () => {
   if (isLoading) {
     return <Spinner></Spinner>;
   }
-
 
   console.log(orders);
 

@@ -3,21 +3,26 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 const AddProduct = () => {
-  const { register, formState: { errors }, handleSubmit, reset } = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
   const handleAddProduct = (data) => {
     console.log(data);
 
     const ItemDetails = {
-      name : data.name,
+      name: data.name,
       image: data.image,
       description: data.description,
       minOrder: parseInt(data.minOrder),
       available: parseInt(data.available),
-      price: parseInt(data.price)
-    }
+      price: parseInt(data.price),
+    };
 
-    fetch("http://localhost:5000/tools", {
+    fetch("https://arcane-badlands-58139.herokuapp.com/tools", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const MyReview = () => {
-    const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const {
     register,
     formState: { errors },
@@ -17,13 +17,13 @@ const MyReview = () => {
     console.log(data);
 
     const review = {
-        name: user.displayName,
-        email: user.email,
-        description: data.description,
-        ratings: data.ratings,
-    }
+      name: user.displayName,
+      email: user.email,
+      description: data.description,
+      ratings: data.ratings,
+    };
 
-    fetch("http://localhost:5000/review",{
+    fetch("https://arcane-badlands-58139.herokuapp.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,13 +31,13 @@ const MyReview = () => {
       },
       body: JSON.stringify(review),
     })
-    .then((res) => res.json())
-    .then(data => {
-      if (data.acknowledged) {
-        toast.success("Review Posted");
-        reset();
-      }
-    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success("Review Posted");
+          reset();
+        }
+      });
 
     console.log(review);
   };
@@ -66,13 +66,15 @@ const MyReview = () => {
                 <input
                   type="number"
                   placeholder="Ratings"
-                  min="1" max="5"
+                  min="1"
+                  max="5"
                   className="input input-bordered input-primary w-full"
                   {...register("ratings", { required: true })}
                 />
                 <label className="label">
                   <span className="label-text-alt text-red-500">
-                    {errors.ratings?.type === "required" && "Ratings is required"}
+                    {errors.ratings?.type === "required" &&
+                      "Ratings is required"}
                   </span>
                 </label>
               </div>

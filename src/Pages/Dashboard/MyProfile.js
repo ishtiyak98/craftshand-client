@@ -8,10 +8,19 @@ import Spinner from "../Shared/Spinner";
 
 const MyProfile = () => {
   const [user] = useAuthState(auth);
-  const { register, formState: { errors }, handleSubmit, reset} = useForm();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
-  const { data: userInfo, isLoading, refetch } = useQuery("userInfo", () =>
-    fetch(`http://localhost:5000/users/${user.email}`, {
+  const {
+    data: userInfo,
+    isLoading,
+    refetch,
+  } = useQuery("userInfo", () =>
+    fetch(`https://arcane-badlands-58139.herokuapp.com/users/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -26,32 +35,35 @@ const MyProfile = () => {
   }
 
   const handleUpdate = (data) => {
-    const{education, location, phone, linkedIn} = data
+    const { education, location, phone, linkedIn } = data;
 
-    const updateInfo ={
-      education : education ? education : userInfo.education,
-      location : location ? location : userInfo.location,
-      phone : phone ? phone : userInfo.phone,
-      linkedIn : linkedIn ? linkedIn : userInfo.linkedIn,
-    }
+    const updateInfo = {
+      education: education ? education : userInfo.education,
+      location: location ? location : userInfo.location,
+      phone: phone ? phone : userInfo.phone,
+      linkedIn: linkedIn ? linkedIn : userInfo.linkedIn,
+    };
 
-    fetch(`http://localhost:5000/userUpdate/${user.email}`, {
+    fetch(
+      `https://arcane-badlands-58139.herokuapp.com/userUpdate/${user.email}`,
+      {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(updateInfo),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.acknowledged) {
-            refetch();
-            reset();
-            toast.success("user-info updated")
-          }
-        });
-  }
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          refetch();
+          reset();
+          toast.success("user-info updated");
+        }
+      });
+  };
 
   console.log(userInfo);
   return (

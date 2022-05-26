@@ -3,12 +3,13 @@ import { useQuery } from "react-query";
 import Spinner from "../Shared/Spinner";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
-import { FaStar } from 'react-icons/fa';
-
+import { FaStar } from "react-icons/fa";
 
 const Reviews = () => {
   const { data: reviews, isLoading } = useQuery("reviews", () =>
-    fetch("http://localhost:5000/review").then((res) => res.json())
+    fetch("https://arcane-badlands-58139.herokuapp.com/review").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -41,15 +42,16 @@ const Reviews = () => {
                       "{review.description}"
                     </p>
                     <div className="mx-auto flex justify-center mb-3">
-                        <div className="flex text-primary">
-                            {
-                                [...Array(parseInt(review.ratings))].map( (item,index) => <FaStar key={index}/>)
-                                
-                            }
-                        </div>
+                      <div className="flex text-primary">
+                        {[...Array(parseInt(review.ratings))].map(
+                          (item, index) => (
+                            <FaStar key={index} />
+                          )
+                        )}
+                      </div>
                     </div>
                     <h4 className="text-center italic text-primary text-lg font-medium">
-                        Ratings: {review.ratings}/5
+                      Ratings: {review.ratings}/5
                     </h4>
                   </div>
                 </div>

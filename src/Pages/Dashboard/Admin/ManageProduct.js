@@ -3,10 +3,15 @@ import { useQuery } from "react-query";
 import Spinner from "../../Shared/Spinner";
 import ManageProductRow from "./ManageProductRow";
 
-
 const ManageProduct = () => {
-  const { data: allTools, isLoading, refetch } = useQuery("allTools", () =>
-    fetch("http://localhost:5000/tools").then((res) => res.json())
+  const {
+    data: allTools,
+    isLoading,
+    refetch,
+  } = useQuery("allTools", () =>
+    fetch("https://arcane-badlands-58139.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {

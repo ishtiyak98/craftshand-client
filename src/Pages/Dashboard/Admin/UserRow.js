@@ -6,7 +6,7 @@ const UserRow = ({ user, index, refetch }) => {
   const { email, role } = user;
 
   const handleAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://arcane-badlands-58139.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -18,9 +18,8 @@ const UserRow = ({ user, index, refetch }) => {
             icon: "error",
             title: "Not Authorized",
             text: "You don't have authorization to make an admin",
-            iconColor: "#FF6A00"
+            iconColor: "#FF6A00",
           });
-          
         }
         return res.json();
       })

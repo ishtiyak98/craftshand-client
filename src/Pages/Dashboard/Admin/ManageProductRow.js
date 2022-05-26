@@ -14,7 +14,7 @@ const ManageProductRow = ({ tools, index, refetch }) => {
       iconColor: "#FF6A00",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toolsItem/${id}`, {
+        fetch(`https://arcane-badlands-58139.herokuapp.com/toolsItem/${id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

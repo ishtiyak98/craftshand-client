@@ -5,8 +5,9 @@ import ToolsCard from "./ToolsCard";
 
 const Tools = () => {
   const { data: tools, isLoading } = useQuery("tools", () =>
-    fetch("http://localhost:5000/tools")
-    .then((res) => res.json())
+    fetch("https://arcane-badlands-58139.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -20,9 +21,12 @@ const Tools = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-20">
-        {[...tools].reverse().slice(0,6).map((tool) => (
-          <ToolsCard key={tool._id} tool={tool}></ToolsCard>
-        ))}
+        {[...tools]
+          .reverse()
+          .slice(0, 6)
+          .map((tool) => (
+            <ToolsCard key={tool._id} tool={tool}></ToolsCard>
+          ))}
       </div>
     </div>
   );

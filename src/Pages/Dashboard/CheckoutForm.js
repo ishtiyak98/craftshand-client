@@ -14,7 +14,7 @@ const CheckoutForm = ({ orderItem }) => {
   const { _id, price, customerName, email } = orderItem;
 
   useEffect(() => {
-    fetch("http://localhost:5000/payment-intent", {
+    fetch("https://arcane-badlands-58139.herokuapp.com/payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -30,8 +30,8 @@ const CheckoutForm = ({ orderItem }) => {
       });
   }, [price]);
 
-  if (processing===true) {
-    return <Spinner></Spinner>
+  if (processing === true) {
+    return <Spinner></Spinner>;
   }
 
   const handleSubmit = async (e) => {
@@ -87,7 +87,7 @@ const CheckoutForm = ({ orderItem }) => {
         itemId: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/order/${_id}`, {
+      fetch(`https://arcane-badlands-58139.herokuapp.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -101,8 +101,6 @@ const CheckoutForm = ({ orderItem }) => {
           console.log(data);
         });
     }
-
-    
   };
 
   return (
