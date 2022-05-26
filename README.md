@@ -1,4 +1,4 @@
-# CraftsHands
+# CraftsHand
 
 ### Live Site Link : [https://craftshand-82ad5.web.app](https://craftshand-82ad5.web.app/)
 
