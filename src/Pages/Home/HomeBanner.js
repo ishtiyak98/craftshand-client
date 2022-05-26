@@ -20,8 +20,7 @@ const HomeBanner = () => {
               <h4 className="text-2xl text-center lg:text-left text-white font-bold ">Fine Carpenter Tools</h4>
               <h1 className="text-4xl text-center lg:text-left lg:text-6xl text-primary font-bold">COMPLETE FURNISHING WITH BEST QUALITY</h1>
               <p className=" lg:text-xl text-center lg:text-left text-white ">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam quisquam nam commodi blanditiis enim eaque beatae qui a sit ipsam.
-            
+                We have an outstanding workmanship including a dedicated team of engineers and marketing professionals.
               </p>
               <button className="btn btn-primary rounded-none text-white block mx-auto lg:mx-0">Read More</button>
           </div>

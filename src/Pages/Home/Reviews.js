@@ -16,7 +16,6 @@ const Reviews = () => {
     return <Spinner></Spinner>;
   }
 
-  console.log(reviews);
   return (
     <div className="my-28 px-6 lg:px-24">
       <h2 className="text-5xl text-center lg:text-center font-semibold mb-12">

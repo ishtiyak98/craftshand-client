@@ -20,7 +20,7 @@ const BusinessSummary = () => {
         Our Goals in <span className="text-primary">Numbers</span>
       </h2>
       <p className="text-center text-slate-500 text-lg w-3/4 mx-auto mb-24">
-        CraftsHand is the world's driving worldwide coordinations supplier — we
+        CraftsHand is the world's driving worldwide carpentry tools supplier — we
         uphold industry and exchange the worldwide trade of merchandise through
         land transport.
       </p>
@@ -36,7 +36,7 @@ const BusinessSummary = () => {
             Warehouses Managed
           </h3>
           <p className="text-center text-slate-500">
-            We help you mitigate supply chain disruptions.
+            We have plenty of warehouse to store our goods to increase production
           </p>
         </div>
         <div className="space-y-2">
@@ -46,7 +46,7 @@ const BusinessSummary = () => {
           <h2 className="text-5xl text-center">150+</h2>
           <h3 className="text-xl text-center font-medium">Supply Engineers</h3>
           <p className="text-center text-slate-500">
-            We help you mitigate supply chain disruptions.
+            We have talented skilled engineers to make your product
           </p>
         </div>
         <div className="space-y-2">
@@ -56,7 +56,7 @@ const BusinessSummary = () => {
           <h2 className="text-5xl text-center">60+</h2>
           <h3 className="text-xl text-center font-medium">Countries Covered</h3>
           <p className="text-center text-slate-500">
-            We help you mitigate supply chain disruptions.
+            As we are a global company, we have many global connections
           </p>
         </div>
         <div className="space-y-2">
@@ -66,7 +66,7 @@ const BusinessSummary = () => {
           <h2 className="text-5xl text-center">500+</h2>
           <h3 className="text-xl text-center font-medium">Shops We Help</h3>
           <p className="text-center text-slate-500">
-            We help you mitigate supply chain disruptions.
+            We help local shops and dealer to manage a good supply chain
           </p>
         </div>
       </div>

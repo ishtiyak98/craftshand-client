@@ -2,7 +2,7 @@
     {
         "name": "Caliper",
         "image": "https://i.ibb.co/R61cPB5/caliper.webp",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "It is malleable iron frame printed, dark plated spindle. It can measure accurate number in carpentry work.",
         "minOrder": 50,
         "available": 200,
         "price": 70
@@ -10,7 +10,7 @@
     {
         "name": "Hand Saw",
         "image": "https://i.ibb.co/Lrr8rn4/handshaw.webp",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "This hand saw has a high speed carbon steel blade with insert Moulded plastic Handle. The cutting edges are too sharp.",
         "minOrder": 20,
         "available": 130,
         "price": 30
@@ -18,7 +18,7 @@
     {
         "name": "Marking Gauge",
         "image": "https://i.ibb.co/9GWZBvg/marking.webp",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "It has the capability to tell the fitted measurement of an object that helps a woodworker to build a product.",
         "minOrder": 10,
         "available": 50,
         "price": 51
@@ -26,7 +26,7 @@
     {
         "name": "Pliers",
         "image": "https://i.ibb.co/vc6gSkD/pliers.webp",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "This tool has a Carbon Steel/Crv bright chrome metal body with natural polish and PVC sleeve to cut anything out.",
         "minOrder": 5,
         "available": 30,
         "price": 155
@@ -34,7 +34,7 @@
     {
         "name": "Steel Nail",
         "image": "https://i.ibb.co/XpP0M1q/nail.jpg",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "This nails are made with steel. It is strong enough to hold many objects also the durability is good enough.",
         "minOrder": 20,
         "available": 230,
         "price": 65
@@ -42,7 +42,7 @@
     {
         "name": "Hammer",
         "image": "https://i.ibb.co/G7bppLr/hammer.webp",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "It is a Steel Handle With Rubber Grip, Carbon Steel, Polished Head hammer. This hammer is strong enough to crush any object",
         "minOrder": 15,
         "available": 190,
         "price": 85
@@ -50,7 +50,7 @@
     {
         "name": "Electric Jigsaw",
         "image": "https://i.ibb.co/KXwrbdp/jigshaw.webp",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "This Electric Jigsaw tool is suitable for cutting wood/ plastic plates / metal plates / stainless steel plates/ aluminum plates",
         "minOrder": 10,
         "available": 180,
         "price": 210
@@ -58,7 +58,7 @@
     {
         "name": "Woodwork Tools",
         "image": "https://i.ibb.co/JpvqvMb/Shop-15.webp",
-        "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+        "description": "This package is the collection of various wood cutting tools. These are used in cutting and reshaping woods and wood product.",
         "minOrder": 35,
         "available": 160,
         "price": 115
