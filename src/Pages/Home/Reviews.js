@@ -2,8 +2,8 @@ import React from "react";
 import { useQuery } from "react-query";
 import Spinner from "../Shared/Spinner";
 import "react-slideshow-image/dist/styles.css";
-import { Slide } from "react-slideshow-image";
 import { FaStar } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -73,8 +73,11 @@ const Reviews = () => {
                     {[...Array(parseInt(review.ratings))].map((item, index) => (
                       <FaStar key={index} />
                     ))}
+                    {[...Array(5-parseInt(review.ratings))].map((item, index) => (
+                      <FaRegStar key={index} />
+                    ))}
                   </div>
-                  <h4 className="text-center italic text-primary text-lg font-medium">
+                  <h4 className="text-center text-primary text-lg font-medium">
                     Ratings: {review.ratings}/5
                   </h4>
                 </div>
