@@ -6,7 +6,7 @@ import { BsTools } from "react-icons/bs";
 
 const OurServices = () => {
   return (
-    <div className="my-28 px-6 lg:px-24">
+    <div className="mt-16 mb-28 px-6 lg:px-24">
       <h2 className="text-5xl text-center lg:text-center font-semibold mb-12">
         Our <span className="text-primary">Services</span>
       </h2>
