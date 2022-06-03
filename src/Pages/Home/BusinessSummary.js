@@ -5,6 +5,7 @@ import { FaGlobe } from "react-icons/fa";
 import { FaShippingFast } from "react-icons/fa";
 import worldMap from "../../Assets/images/world.png";
 import CountUp from "react-countup";
+import VisibilitySensor from "react-visibility-sensor";
 
 const BusinessSummary = () => {
   return (
@@ -32,7 +33,20 @@ const BusinessSummary = () => {
             <FaSitemap size={"4.1em"} />
           </div>
 
-          <h2 className="text-5xl text-center"> <CountUp end={30} enableScrollSpy />+</h2>
+          <h2 className="text-5xl text-center">
+          <VisibilitySensor partialVisibility>
+              {({ isVisible }) => (
+                <div className="flex justify-center">
+                  <div style={{ height: "20px" }}>
+                    {isVisible ? <CountUp end={30} /> : null}
+                  </div>
+                  <div>
+                    +
+                  </div>
+                </div>
+              )}
+            </VisibilitySensor>
+          </h2>
           <h3 className="text-xl text-center font-medium">
             Warehouses Managed
           </h3>
@@ -46,7 +60,18 @@ const BusinessSummary = () => {
             <AiFillSetting size={"4.1em"} />
           </div>
           <h2 className="text-5xl text-center">
-            <CountUp end={150} enableScrollSpy />+
+          <VisibilitySensor partialVisibility>
+              {({ isVisible }) => (
+                <div className="flex justify-center">
+                  <div style={{ height: "20px" }}>
+                    {isVisible ? <CountUp end={150} /> : null}
+                  </div>
+                  <div>
+                    +
+                  </div>
+                </div>
+              )}
+            </VisibilitySensor>
           </h2>
           <h3 className="text-xl text-center font-medium">Supply Engineers</h3>
           <p className="text-center text-slate-500">
@@ -57,7 +82,20 @@ const BusinessSummary = () => {
           <div className="flex justify-center text-primary mb-3">
             <FaGlobe size={"4.1em"} />
           </div>
-          <h2 className="text-5xl text-center"> <CountUp end={60} enableScrollSpy />+</h2>
+          <h2 className="text-5xl text-center">
+          <VisibilitySensor partialVisibility>
+              {({ isVisible }) => (
+                <div className="flex justify-center">
+                  <div style={{ height: "20px" }}>
+                    {isVisible ? <CountUp end={60} /> : null}
+                  </div>
+                  <div>
+                    +
+                  </div>
+                </div>
+              )}
+            </VisibilitySensor>
+          </h2>
           <h3 className="text-xl text-center font-medium">Countries Covered</h3>
           <p className="text-center text-slate-500">
             As we are a global company, we have many global connections
@@ -67,7 +105,20 @@ const BusinessSummary = () => {
           <div className="flex justify-center text-primary mb-3">
             <FaShippingFast size={"4.1em"} />
           </div>
-          <h2 className="text-5xl text-center"> <CountUp end={500} enableScrollSpy />+</h2>
+          <h2 className="text-5xl text-center">
+            <VisibilitySensor partialVisibility>
+              {({ isVisible }) => (
+                <div className="flex justify-center">
+                  <div style={{ height: "20px" }}>
+                    {isVisible ? <CountUp end={500} /> : null}
+                  </div>
+                  <div>
+                    +
+                  </div>
+                </div>
+              )}
+            </VisibilitySensor>
+          </h2>
           <h3 className="text-xl text-center font-medium">Shops We Help</h3>
           <p className="text-center text-slate-500">
             We help local shops and dealer to manage a good supply chain
