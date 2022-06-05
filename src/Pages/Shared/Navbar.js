@@ -5,10 +5,12 @@ import { Link, NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 import { GiEclipseSaw } from 'react-icons/gi';
+import Avatar from "../../Assets/Avatar/av3.png"
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
 
+  console.log(user);
   const handleSignOut = ()=>{
     Swal.fire({
       title: "Logged Out!",
@@ -31,16 +33,10 @@ const Navbar = () => {
         <NavLink to={"/portfolio"}>My Portfolio</NavLink>
       </li>
         {
-          user &&<li><NavLink to={"/dashboard"}>Dashboard</NavLink></li>
+          !user && <li className="w-max"><NavLink to={"/login"}>Login</NavLink> </li>
         }
-        {
-          user && <li className="w-max"><NavLink to={"/dashboard/profile"} >{user.displayName}</NavLink></li>
-        }
-        {
-          user ? <li><NavLink to={"/login"} onClick={handleSignOut}>Logout</NavLink></li> : <li><NavLink to={"/login"}>Login</NavLink></li>
-        }
-    
-    </>
+      </>
+      
   );
 
   return (
@@ -83,8 +79,45 @@ const Navbar = () => {
             {navItem}
           </ul>
         </div>
-        <div className="">
+        <div className="flex items-center">
             <label htmlFor="my-drawer-2" className="btn btn-primary text-white drawer-button lg:hidden">Dashboard</label>
+            {
+            user && <div class="dropdown dropdown-end text-primary ml-4">
+            <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+              <div class="w-10 rounded-full">
+                {
+                  user.photoURL ? <img src={user.photoURL} alt=""/> : <img src={Avatar} alt=""/>
+                }
+                
+              </div>
+            </label>
+            <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 shadow bg-base-100 rounded-box w-44">
+              <div className="bg-primary text-white py-4 px-2">
+                {
+                   user &&  
+                    <div className="text-sm">
+                      <span className="font-bold">{user.displayName}</span>
+                    </div>
+                }
+              </div>
+              <li className="py-1">
+                  {
+                    user && <Link to={"/dashboard/profile"} >My Profile</Link>
+                  }
+              </li>
+              <li className="py-1">
+                {
+                  user && <Link to={"/dashboard"}>My Dashboard</Link>
+                }
+              </li>
+              <li className="py-1">
+                {
+                  user ? <NavLink to={"/login"} onClick={handleSignOut}>Logout</NavLink> : <NavLink to={"/login"}>Login</NavLink>
+                }
+              </li>
+            </ul>
+          </div>
+          }
         </div>
       </div>
     </div>
