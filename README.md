@@ -1,6 +1,12 @@
 # CraftsHand
 
-### Live Site Link : [https://craftshand-82ad5.web.app](https://craftshand-82ad5.web.app/)
+### 🖥️ Live Site Link : [https://craftshand-82ad5.web.app](https://craftshand-82ad5.web.app/)
+
+<br>
+
+🕵️‍♂️ To check the admin Functionalities, please login with :  
+- Email: admin@power.com  
+- Password: 123456
 
 <br>
 
@@ -17,7 +23,7 @@
 
 <br>
 
-### Used technologies :
+### Used Technologies :
 
 - React JS
 - React Router
