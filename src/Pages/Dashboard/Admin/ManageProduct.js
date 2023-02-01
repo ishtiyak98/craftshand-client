@@ -9,7 +9,7 @@ const ManageProduct = () => {
     isLoading,
     refetch,
   } = useQuery("allTools", () =>
-    fetch("https://arcane-badlands-58139.herokuapp.com/tools").then((res) =>
+    fetch("https://craftshand-server.onrender.com/tools").then((res) =>
       res.json()
     )
   );

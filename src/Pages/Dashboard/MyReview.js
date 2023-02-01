@@ -23,7 +23,7 @@ const MyReview = () => {
       ratings: data.ratings,
     };
 
-    fetch("https://arcane-badlands-58139.herokuapp.com/review", {
+    fetch("https://craftshand-server.onrender.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

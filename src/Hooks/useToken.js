@@ -12,7 +12,7 @@ const useToken = (user) => {
     const currentUser = { email: email };
 
     if (email) {
-      fetch(`https://arcane-badlands-58139.herokuapp.com/user/${email}`, {
+      fetch(`https://craftshand-server.onrender.com/user/${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

@@ -25,8 +25,8 @@ const Purchase = () => {
     isLoading,
     refetch,
   } = useQuery("toolItem", () =>
-    fetch(`https://arcane-badlands-58139.herokuapp.com/tools/${_id}`).then(
-      (res) => res.json()
+    fetch(`https://craftshand-server.onrender.com/tools/${_id}`).then((res) =>
+      res.json()
     )
   );
 
@@ -81,7 +81,7 @@ const Purchase = () => {
     };
     console.log(orderDetails);
 
-    fetch("https://arcane-badlands-58139.herokuapp.com/order", {
+    fetch("https://craftshand-server.onrender.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -109,7 +109,7 @@ const Purchase = () => {
       });
 
     const updateItem = (updateDetails) => {
-      fetch(`https://arcane-badlands-58139.herokuapp.com/tools/${_id}`, {
+      fetch(`https://craftshand-server.onrender.com/tools/${_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -19,7 +19,7 @@ const Payment = () => {
     isLoading,
     refetch,
   } = useQuery("orderItem", () =>
-    fetch(`https://arcane-badlands-58139.herokuapp.com/orderItem/${id}`, {
+    fetch(`https://craftshand-server.onrender.com/orderItem/${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

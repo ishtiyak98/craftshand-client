@@ -22,7 +22,7 @@ const AddProduct = () => {
       price: parseInt(data.price),
     };
 
-    fetch("https://arcane-badlands-58139.herokuapp.com/tools", {
+    fetch("https://craftshand-server.onrender.com/tools", {
       method: "POST",
       headers: {
         "content-type": "application/json",

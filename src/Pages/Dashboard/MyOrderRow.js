@@ -15,7 +15,7 @@ const MyOrderRow = ({ order, index, refetch }) => {
       iconColor: "#FF6A00",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://arcane-badlands-58139.herokuapp.com/order/${id}`, {
+        fetch(`https://craftshand-server.onrender.com/order/${id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

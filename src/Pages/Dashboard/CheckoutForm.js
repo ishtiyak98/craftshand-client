@@ -14,7 +14,7 @@ const CheckoutForm = ({ orderItem }) => {
   const { _id, price, customerName, email } = orderItem;
 
   useEffect(() => {
-    fetch("https://arcane-badlands-58139.herokuapp.com/payment-intent", {
+    fetch("https://craftshand-server.onrender.com/payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -87,7 +87,7 @@ const CheckoutForm = ({ orderItem }) => {
         itemId: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://arcane-badlands-58139.herokuapp.com/order/${_id}`, {
+      fetch(`https://craftshand-server.onrender.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const ManageOrderRow = ({ index, order, refetch }) => {
   const handleShipped = (id) => {
-    fetch(`https://arcane-badlands-58139.herokuapp.com/orderShipped/${id}`, {
+    fetch(`https://craftshand-server.onrender.com/orderShipped/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -33,7 +33,7 @@ const ManageOrderRow = ({ index, order, refetch }) => {
       iconColor: "#FF6A00",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://arcane-badlands-58139.herokuapp.com/order/${id}`, {
+        fetch(`https://craftshand-server.onrender.com/order/${id}`, {
           method: "DELETE",
           headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`,

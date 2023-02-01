@@ -5,7 +5,7 @@ import ToolsCard from "./ToolsCard";
 
 const Tools = () => {
   const { data: tools, isLoading } = useQuery("tools", () =>
-    fetch("https://arcane-badlands-58139.herokuapp.com/tools").then((res) =>
+    fetch("https://craftshand-server.onrender.com/tools").then((res) =>
       res.json()
     )
   );

@@ -9,7 +9,7 @@ import "react-multi-carousel/lib/styles.css";
 
 const Reviews = () => {
   const { data: reviews, isLoading } = useQuery("reviews", () =>
-    fetch("https://arcane-badlands-58139.herokuapp.com/review").then((res) =>
+    fetch("https://craftshand-server.onrender.com/review").then((res) =>
       res.json()
     )
   );
@@ -73,9 +73,11 @@ const Reviews = () => {
                     {[...Array(parseInt(review.ratings))].map((item, index) => (
                       <FaStar key={index} />
                     ))}
-                    {[...Array(5-parseInt(review.ratings))].map((item, index) => (
-                      <FaRegStar key={index} />
-                    ))}
+                    {[...Array(5 - parseInt(review.ratings))].map(
+                      (item, index) => (
+                        <FaRegStar key={index} />
+                      )
+                    )}
                   </div>
                   <h4 className="text-center text-primary text-lg font-medium">
                     Ratings: {review.ratings}/5

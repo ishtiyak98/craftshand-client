@@ -20,7 +20,7 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery("userInfo", () =>
-    fetch(`https://arcane-badlands-58139.herokuapp.com/users/${user.email}`, {
+    fetch(`https://craftshand-server.onrender.com/users/${user.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -44,17 +44,14 @@ const MyProfile = () => {
       linkedIn: linkedIn ? linkedIn : userInfo.linkedIn,
     };
 
-    fetch(
-      `https://arcane-badlands-58139.herokuapp.com/userUpdate/${user.email}`,
-      {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(updateInfo),
-      }
-    )
+    fetch(`https://craftshand-server.onrender.com/userUpdate/${user.email}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(updateInfo),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
